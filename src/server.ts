@@ -29,7 +29,7 @@ app.post('/games/:id/ads', async (request, response) => {
     const gameId = request.params.id;
     const body = request.body;
 
-    const ad = await prisma.ad.create({
+    await prisma.ad.create({
         data: {
             gameId,
             name: body.name,
@@ -42,7 +42,7 @@ app.post('/games/:id/ads', async (request, response) => {
         }
     })
 
-    return response.status(201).json(ad);
+    return response.status(201).json(body);
 });
 
 app.get('/games/:id/ads', async (request, response) => {
